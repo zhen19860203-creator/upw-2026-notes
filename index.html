@@ -8731,7 +8731,10 @@ function loadChapter(idx) {
     <span class="day-badge" style="background:${dayColors[ch.day]}20;color:${dayColors[ch.day]};border:1px solid ${dayColors[ch.day]}40">Day ${ch.day}</span>
     <h1 class="chapter-title">${ch.title}</h1>
   </div>`;
-  inner.innerHTML = meta + marked.parse(ch.content);
+  const bodyText = ch.content.replace(/^#[^
+]*
++/, '');
+  inner.innerHTML = meta + marked.parse(bodyText);
 
   // 標記已讀
   readSet.add(ch.id);
