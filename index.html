@@ -40,7 +40,7 @@ body {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  font-size: 17px;
+  font-size:21px;
 }
 /* ── Sidebar ── */
 #sidebar {
@@ -60,13 +60,13 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .sidebar-header h1 {
-  font-size: 16px;
+  font-size:20px;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: .5px;
 }
 .sidebar-header .subtitle {
-  font-size: 12px;
+  font-size:16px;
   color: var(--text-light);
   margin-top: 3px;
 }
@@ -74,7 +74,7 @@ body {
   padding: 10px 18px;
   border-bottom: 1px solid var(--border);
 }
-.progress-label { font-size: 12px; color: var(--text-light); margin-bottom: 5px; }
+.progress-label { font-size:16px; color: var(--text-light); margin-bottom: 5px; }
 .progress-bar { height: 4px; background: var(--progress-bg); border-radius: 2px; overflow: hidden; }
 #progress-bar-fill { height:100%; background:var(--progress-fill); border-radius:2px; transition:width .3s ease; width:0%; }
 .sidebar-search {
@@ -88,7 +88,7 @@ body {
   border-radius: 7px;
   background: var(--card-bg);
   color: var(--text);
-  font-size: 14px;
+  font-size:18px;
   outline: none;
 }
 #search-input:focus { border-color: var(--accent); }
@@ -99,12 +99,12 @@ body {
   max-height: 220px; overflow-y: auto;
   background: var(--card-bg);
 }
-.search-count { font-size:12px; color:var(--text-light); padding:4px 6px; }
+.search-count { font-size:16px; color:var(--text-light); padding:4px 6px; }
 .search-result-item { padding:7px 8px; border-radius:5px; cursor:pointer; transition:background .15s; }
 .search-result-item:hover { background:var(--hover-bg); }
-.sr-title { font-size:13px; font-weight:600; color:var(--text); }
-.sr-excerpt { font-size:12px; color:var(--text-light); margin-top:2px; }
-.search-no-result { font-size:13px; color:var(--text-light); padding:8px 6px; }
+.sr-title { font-size:17px; font-weight:600; color:var(--text); }
+.sr-excerpt { font-size:16px; color:var(--text-light); margin-top:2px; }
+.search-no-result { font-size:17px; color:var(--text-light); padding:8px 6px; }
 mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
 .search-hl { background:#7a5c20; color:#f0d090; border-radius:2px; }
 #sidebar-nav { flex:1; overflow-y:auto; padding:4px 0; }
@@ -116,12 +116,12 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
   display:flex; justify-content:space-between; align-items:center;
   width:100%; padding:10px 18px;
   background:none; border:none; cursor:pointer;
-  font-size:13px; font-weight:700; color:var(--accent);
+  font-size:17px; font-weight:700; color:var(--accent);
   text-align:left; transition:background .15s;
   border-top: 1px solid var(--border);
 }
 .day-toggle:hover { background:var(--hover-bg); }
-.day-toggle .arrow { font-size:10px; transition:transform .2s; }
+.day-toggle .arrow { font-size:14px; transition:transform .2s; }
 .day-toggle.collapsed .arrow { transform:rotate(-90deg); }
 .day-body { overflow:hidden; }
 .day-body.collapsed { display:none; }
@@ -131,19 +131,19 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
   display:flex; justify-content:space-between; align-items:center;
   width:100%; padding:7px 18px 7px 26px;
   background:var(--sg-bg); border:none; cursor:pointer;
-  font-size:12px; font-weight:600; color:var(--sg-text);
+  font-size:16px; font-weight:600; color:var(--sg-text);
   text-align:left; transition:background .15s;
   border-bottom: 1px solid var(--border);
 }
 .subgroup-toggle:hover { opacity:.85; }
-.sg-arrow { font-size:9px; transition:transform .2s; }
+.sg-arrow { font-size:13px; transition:transform .2s; }
 .subgroup-toggle.collapsed .sg-arrow { transform:rotate(-90deg); }
 .sg-chapters.collapsed { display:none; }
 /* Chapter item */
 .chapter-item {
   display:flex; align-items:center; gap:8px;
   padding:7px 14px 7px 34px;
-  cursor:pointer; font-size:13px; color:var(--text);
+  cursor:pointer; font-size:17px; color:var(--text);
   transition:background .15s;
 }
 .chapter-item:hover { background:var(--hover-bg); }
@@ -162,13 +162,13 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
   background:var(--sidebar-bg); border-bottom:1px solid var(--border);
   flex-shrink:0;
 }
-#menu-btn { display:none; background:none; border:none; font-size:20px; cursor:pointer; color:var(--text-light); padding:4px; }
-#topbar-title { flex:1; font-size:15px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.topbar-stat { font-size:13px; color:var(--text-light); white-space:nowrap; }
+#menu-btn { display:none; background:none; border:none; font-size:24px; cursor:pointer; color:var(--text-light); padding:4px; }
+#topbar-title { flex:1; font-size:19px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topbar-stat { font-size:17px; color:var(--text-light); white-space:nowrap; }
 .nav-btn {
   padding:6px 14px; background:var(--card-bg);
   border:1px solid var(--border); border-radius:6px;
-  cursor:pointer; font-size:13px; color:var(--text); transition:all .15s;
+  cursor:pointer; font-size:17px; color:var(--text); transition:all .15s;
 }
 .nav-btn:hover:not(:disabled) { background:var(--hover-bg); border-color:var(--accent); }
 .nav-btn:disabled { opacity:.35; cursor:not-allowed; }
@@ -180,15 +180,15 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
   justify-content:center; height:100%;
   color:var(--text-light); text-align:center; padding:40px;
 }
-#welcome h2 { font-size:26px; color:var(--accent); margin-bottom:14px; }
-#welcome p { font-size:17px; line-height:1.9; max-width:500px; }
-#welcome .stat-line { margin-top:20px; font-size:14px; }
+#welcome h2 { font-size:30px; color:var(--accent); margin-bottom:14px; }
+#welcome p { font-size:21px; line-height:1.9; max-width:500px; }
+#welcome .stat-line { margin-top:20px; font-size:18px; }
 #content-inner { display:none; max-width:780px; margin:0 auto; padding:36px 40px 80px; }
 /* ── Chapter content ── */
 #chapter-meta { display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
 .meta-tag {
   padding:4px 12px; border-radius:5px;
-  font-size:13px; font-weight:600;
+  font-size:17px; font-weight:600;
   background:var(--meta-bg); color:var(--text-light);
 }
 .meta-tag.day1 { background:var(--day1-bg); color:var(--day1); }
@@ -196,37 +196,37 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
 .meta-tag.day3 { background:var(--day3-bg); color:var(--day3); }
 .meta-tag.day4 { background:var(--day4-bg); color:var(--day4); }
 #content-inner h1 {
-  font-size:26px; font-weight:700;
+  font-size:30px; font-weight:700;
   margin-bottom:18px; color:var(--text); line-height:1.4;
 }
 #content-inner h2 {
-  font-size:19px; font-weight:700;
+  font-size:23px; font-weight:700;
   margin:32px 0 14px; color:var(--text);
   border-bottom:2px solid var(--border); padding-bottom:6px;
 }
 #content-inner h3 {
-  font-size:17px; font-weight:600;
+  font-size:21px; font-weight:600;
   margin:22px 0 10px; color:var(--accent);
 }
-#content-inner p { margin-bottom:16px; color:var(--text); font-size:17px; }
+#content-inner p { margin-bottom:16px; color:var(--text); font-size:21px; }
 #content-inner ul, #content-inner ol { margin:10px 0 16px 22px; }
-#content-inner li { margin-bottom:7px; font-size:17px; }
+#content-inner li { margin-bottom:7px; font-size:21px; }
 #content-inner blockquote {
   border-left:3px solid var(--accent);
   padding:12px 20px; margin:18px 0;
   background:var(--blockquote-bg);
   border-radius:0 8px 8px 0;
   color:var(--text); font-style:italic;
-  font-size:17px;
+  font-size:21px;
 }
 #content-inner strong { font-weight:700; color:#f0e0c0; }
 #content-inner em { font-style:italic; color:var(--text-light); }
 #content-inner code {
   background:var(--code-bg); padding:2px 6px;
-  border-radius:4px; font-family:monospace; font-size:15px;
+  border-radius:4px; font-family:monospace; font-size:19px;
 }
 #content-inner hr { border:none; border-top:1px solid var(--border); margin:28px 0; }
-#content-inner table { width:100%; border-collapse:collapse; margin:18px 0; font-size:16px; }
+#content-inner table { width:100%; border-collapse:collapse; margin:18px 0; font-size:20px; }
 #content-inner th {
   background:var(--table-head); padding:10px 14px;
   border:1px solid var(--border); font-weight:600; text-align:left;
@@ -239,7 +239,7 @@ mark { background:#7a5c20; color:#f0d090; border-radius:2px; }
   position:fixed; bottom:24px; right:24px;
   width:42px; height:42px; border-radius:50%;
   background:var(--accent); color:#111;
-  border:none; cursor:pointer; font-size:20px;
+  border:none; cursor:pointer; font-size:24px;
   display:flex; align-items:center; justify-content:center;
   opacity:0; pointer-events:none; transition:opacity .2s; z-index:50;
 }
