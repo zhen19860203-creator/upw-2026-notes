@@ -8711,6 +8711,113 @@ function buildSidebar() {
 }
 
 
+
+// ── State ──────────────────────────────────────────────
+let currentIdx = -1;
+const READ_KEY = 'upw2026_read';
+let readSet = new Set(JSON.parse(localStorage.getItem(READ_KEY) || '[]'));
+
+// ── 核心：載入章節 ──────────────────────────────────────
+function loadChapter(idx) {
+  currentIdx = idx;
+  const ch = CHAPTERS[idx];
+
+  document.getElementById('welcome').style.display = 'none';
+  const inner = document.getElementById('content-inner');
+
+  const dayColors = {1:'#e08060',2:'#5ca3d8',3:'#6ab87a',4:'#b07ad8'};
+  const meta = `<div class="chapter-meta">
+    <span class="day-badge" style="background:${dayColors[ch.day]}20;color:${dayColors[ch.day]};border:1px solid ${dayColors[ch.day]}40">Day ${ch.day}</span>
+    <h1 class="chapter-title">${ch.title}</h1>
+  </div>`;
+  inner.innerHTML = meta + marked.parse(ch.content);
+
+  // 標記已讀
+  readSet.add(ch.id);
+  localStorage.setItem(READ_KEY, JSON.stringify([...readSet]));
+
+  // 更新側欄 active / read-dot
+  document.querySelectorAll('.chapter-item').forEach(el => {
+    const elIdx = parseInt(el.dataset.globalIdx);
+    el.classList.toggle('active', elIdx === idx);
+    const dot = el.querySelector('.read-dot');
+    if (dot && readSet.has(CHAPTERS[elIdx]?.id)) dot.classList.add('read');
+  });
+
+  document.getElementById('btn-prev').disabled = idx === 0;
+  document.getElementById('btn-next').disabled = idx === CHAPTERS.length - 1;
+  document.getElementById('topbar-title').textContent = ch.shortTitle;
+
+  updateProgress();
+  closeSidebar();
+  window.scrollTo(0, 0);
+}
+
+// ── 進度條 ─────────────────────────────────────────────
+function updateProgress() {
+  const count = CHAPTERS.filter(ch => readSet.has(ch.id)).length;
+  ['read-count','read-count-top'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = count;
+  });
+  const welcome = document.getElementById('welcome-read');
+  if (welcome) welcome.textContent = count;
+  const fill = document.getElementById('progress-bar-fill');
+  if (fill) fill.style.width = (count / CHAPTERS.length * 100) + '%';
+}
+
+// ── 搜尋 ───────────────────────────────────────────────
+function filterChapters(val) {
+  const q = val.trim().toLowerCase();
+  const resultsEl = document.getElementById('search-results');
+  const navEl = document.getElementById('sidebar-nav');
+  if (!q) { resultsEl.innerHTML = ''; navEl.style.display = ''; return; }
+  navEl.style.display = 'none';
+  const matches = CHAPTERS.filter(ch =>
+    ch.title.toLowerCase().includes(q) || ch.content.toLowerCase().includes(q)
+  );
+  if (!matches.length) { resultsEl.innerHTML = '<div style="padding:12px;color:var(--text-light)">找不到相關章節</div>'; return; }
+  resultsEl.innerHTML = matches.map(ch => {
+    const i = CHAPTERS.indexOf(ch);
+    return `<div class="chapter-item" onclick="loadChapter(${i})">
+      <span class="read-dot ${readSet.has(ch.id)?'read':''}"></span>
+      <span>${ch.shortTitle}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── 側欄 toggle（手機）────────────────────────────────
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('active');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('active');
+}
+
+// ── 章節導航 ───────────────────────────────────────────
+function navigatePrev() { if (currentIdx > 0) loadChapter(currentIdx - 1); }
+function navigateNext() { if (currentIdx < CHAPTERS.length - 1) loadChapter(currentIdx + 1); }
+
+// ── 回頂 ───────────────────────────────────────────────
+function scrollToTop() { window.scrollTo({top:0,behavior:'smooth'}); }
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('back-to-top');
+  if (btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+});
+
+// ── 鍵盤導航 ──────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowRight' || e.key === 'j') navigateNext();
+  if (e.key === 'ArrowLeft'  || e.key === 'k') navigatePrev();
+});
+
+// ── 初始化 ────────────────────────────────────────────
+buildSidebar();
+updateProgress();
+
 </script>
 </body>
 </html>
